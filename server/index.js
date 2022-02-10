@@ -10,12 +10,11 @@ const rollbar = new Rollbar({
   captureUncaught: true,
   captureUnhandledRejections: true,
 })
-
+rollbar.log("Hello world!");
 app.use(express.json());
 app.use(express.static('public'))
 
 app.get('/',(req,res) => {
-    rollbar.log("Hello world!");
     res.sendFile(path.join(__dirname, '../public/index.html'))
 })
 
