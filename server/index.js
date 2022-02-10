@@ -2,19 +2,20 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 
-// const path = require('path')
+const path = require('path')
 
-// const Rollbar = require('rollbar')
-// const rollbar = new Rollbar({
-//   accessToken: process.env.ROLLBAR_TOKEN,
-//   captureUncaught: true,
-//   captureUnhandledRejections: true,
-// })
+const Rollbar = require('rollbar')
+const rollbar = new Rollbar({
+  accessToken: process.env.ROLLBAR_TOKEN,
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+})
 
 app.use(express.json());
 app.use(express.static('public'))
 
 app.get('/',(req,res) => {
+    rollbar.log("Hello world!");
     res.sendFile(path.join(__dirname, '../public/index.html'))
 })
 
