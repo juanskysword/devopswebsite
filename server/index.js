@@ -13,6 +13,10 @@ const app = express()
 
 app.use(express.json());
 
+app.get('/',(req,res) => {
+    res.sendFile(path.join(__dirname, '../public/index.html'))
+})
+
 const port = process.env.PORT || process.env.SERVER_PORT
 
 app.listen(port, () => console.log(`Server running on ${port}`))
